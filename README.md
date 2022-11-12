@@ -12,8 +12,6 @@ git push -u origin (название ветки) <br>
 Как пушить после 1 раза
 <br>
 git add . <br>
-git rm --cached Core/App.Config <br>
-git rm --cached School4Children/App.config <br>
 git status (тут ниче писать не надо, но должно высветиться красным текстом 2 файлика, остальное зелёным) <br>
 git commit -m "(название коммита)" <br>
 git push -u origin (название ветки) <br>
