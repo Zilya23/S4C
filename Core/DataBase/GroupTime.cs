@@ -12,12 +12,14 @@ namespace Core.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class GroupTime
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> IDTimetable { get; set; }
+        public Nullable<int> IDGroup { get; set; }
+        public bool IsVisited { get; set; }
+    
+        public virtual GroupStatistic GroupStatistic { get; set; }
+        public virtual Timetable Timetable { get; set; }
     }
 }

@@ -17,17 +17,16 @@ namespace Core.DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GroupStatistic()
         {
-            this.Timetable = new HashSet<Timetable>();
+            this.GroupTime = new HashSet<GroupTime>();
         }
     
         public int ID { get; set; }
         public Nullable<int> IDStudent { get; set; }
         public Nullable<int> IDLesson { get; set; }
-        public Nullable<int> Rating { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GroupTime> GroupTime { get; set; }
         public virtual Lesson Lesson { get; set; }
         public virtual Student Student { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Timetable> Timetable { get; set; }
     }
 }

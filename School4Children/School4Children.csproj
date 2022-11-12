@@ -118,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RecordStudengtPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TeacherTimeTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +142,9 @@
     </Compile>
     <Compile Include="Pages\HeadTimtableMainPage.xaml.cs">
       <DependentUpon>HeadTimtableMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecordStudengtPage.xaml.cs">
+      <DependentUpon>RecordStudengtPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeacherTimeTablePage.xaml.cs">
       <DependentUpon>TeacherTimeTablePage.xaml</DependentUpon>
