@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7ba57971244d46f5ab692bdc4f293398" Name="Diagram1">
+        <EntityTypeShape EntityType="School4forModel.Education" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="School4forModel.GroupStatistic" Width="1.5" PointX="10.5" PointY="3.375" />
+        <EntityTypeShape EntityType="School4forModel.Lesson" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="School4forModel.Role" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="School4forModel.Student" Width="1.5" PointX="8.25" PointY="8.375" />
+        <EntityTypeShape EntityType="School4forModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="School4forModel.Teacher" Width="1.5" PointX="3" PointY="2.75" />
+        <EntityTypeShape EntityType="School4forModel.TimeLesson" Width="1.5" PointX="7.5" PointY="3.375" />
+        <EntityTypeShape EntityType="School4forModel.Timetable" Width="1.5" PointX="12.75" PointY="3.5" />
+        <AssociationConnector Association="School4forModel.FK_Teacher_Education" />
+        <AssociationConnector Association="School4forModel.FK_Statistic_Lesson" />
+        <AssociationConnector Association="School4forModel.FK_Statistic_Student" />
+        <AssociationConnector Association="School4forModel.FK_Timetable_GroupStatistic" />
+        <AssociationConnector Association="School4forModel.FK_Lesson_Teacher" />
+        <AssociationConnector Association="School4forModel.FK_TimeLesson_Lesson" />
+        <AssociationConnector Association="School4forModel.FK_Teacher_Role" />
+        <AssociationConnector Association="School4forModel.FK_Timetable_TimeLesson" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
