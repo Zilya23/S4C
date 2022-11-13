@@ -45,5 +45,14 @@ namespace School4Children.Pages
         {
             NavigationService.Navigate(new AddCirclePage());
         }
+
+        private void lvTeacherSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lvTeacher.SelectedItem != null)
+            {
+                var lesson = lvTeacher.SelectedItem as Lesson;
+                NavigationService.Navigate(new RedactionCirclePage(lesson));
+            }
+        }
     }
 }

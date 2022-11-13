@@ -16,7 +16,7 @@ namespace Core.Function
 
         public static List<Lesson> GetLessons()
         {
-            return BDConnection.connection.Lesson.ToList();
+            return BDConnection.connection.Lesson.Where(x=> x.IsDelete != true).ToList();
         }
 
         public static void SaveLesson(Lesson lesson)

@@ -34,7 +34,11 @@ namespace School4Children.Pages
 
         private void lvTeacherSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(lvTeacher.SelectedItem != null)
+            {
+                var teacher = lvTeacher.SelectedItem as Teacher;
+                NavigationService.Navigate(new RedTeacherPage(teacher));
+            }
         }
 
         private void btnStatisticClick(object sender, RoutedEventArgs e)

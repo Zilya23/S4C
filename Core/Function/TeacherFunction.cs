@@ -41,5 +41,10 @@ namespace Core.Function
                 return false;
             }
         }
+
+        public static void SaveChangesTeacher(Teacher teacher)
+        {
+            BDConnection.connection.SaveChanges();
+        }
     }
 }
