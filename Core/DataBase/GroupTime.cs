@@ -12,20 +12,14 @@ namespace Core.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Timetable
+    public partial class GroupTime
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Timetable()
-        {
-            this.GroupTime = new HashSet<GroupTime>();
-        }
-    
         public int ID { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
-        public Nullable<int> IDTimeLesson { get; set; }
+        public Nullable<int> IDTimetable { get; set; }
+        public Nullable<int> IDGroup { get; set; }
+        public bool IsVisited { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GroupTime> GroupTime { get; set; }
-        public virtual TimeLesson TimeLesson { get; set; }
+        public virtual GroupStatistic GroupStatistic { get; set; }
+        public virtual Timetable Timetable { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Core.DataBase
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class School4forEntities : DbContext
+    public partial class SchoolEntities : DbContext
     {
-        public School4forEntities()
-            : base("name=School4forEntities")
+        public SchoolEntities()
+            : base("name=SchoolEntities")
         {
         }
     
@@ -27,12 +27,13 @@ namespace Core.DataBase
     
         public virtual DbSet<Education> Education { get; set; }
         public virtual DbSet<GroupStatistic> GroupStatistic { get; set; }
+        public virtual DbSet<GroupTime> GroupTime { get; set; }
         public virtual DbSet<Lesson> Lesson { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
-        public virtual DbSet<TimeLesson> TimeLesson { get; set; }
         public virtual DbSet<Timetable> Timetable { get; set; }
+        public virtual DbSet<TimeLesson> TimeLesson { get; set; }
     }
 }

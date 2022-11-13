@@ -22,6 +22,7 @@ namespace Core.DataBase
         }
     
         public int ID { get; set; }
+        public string Name { get; set; }
         public Nullable<bool> IsDelete { get; set; }
         public Nullable<int> IDTeacher { get; set; }
         public Nullable<int> CountChildren { get; set; }

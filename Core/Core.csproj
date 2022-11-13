@@ -57,6 +57,9 @@
     <Compile Include="DataBase\GroupStatistic.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\GroupTime.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\Lesson.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -95,6 +98,7 @@
     </Compile>
     <Compile Include="Function\AuthorizationFunction.cs" />
     <Compile Include="Function\EducationFunction.cs" />
+    <Compile Include="Function\GroupFunctions.cs" />
     <Compile Include="Function\LessonFunction.cs" />
     <Compile Include="Function\TeacherFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
