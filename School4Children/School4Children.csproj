@@ -118,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RedactionCirclePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StatisticPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +150,9 @@
     </Compile>
     <Compile Include="Pages\HeadTimtableMainPage.xaml.cs">
       <DependentUpon>HeadTimtableMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RedactionCirclePage.xaml.cs">
+      <DependentUpon>RedactionCirclePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StatisticPage.xaml.cs">
       <DependentUpon>StatisticPage.xaml</DependentUpon>
