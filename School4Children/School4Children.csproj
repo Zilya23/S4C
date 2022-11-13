@@ -106,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddTimeLessonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HeadTimtableMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherLessonsTimePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +138,9 @@
     <Compile Include="Pages\AddTeacherPage.xaml.cs">
       <DependentUpon>AddTeacherPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddTimeLessonPage.xaml.cs">
+      <DependentUpon>AddTimeLessonPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
@@ -138,6 +149,9 @@
     </Compile>
     <Compile Include="Pages\HeadTimtableMainPage.xaml.cs">
       <DependentUpon>HeadTimtableMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherLessonsTimePage.xaml.cs">
+      <DependentUpon>TeacherLessonsTimePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeacherTimeTablePage.xaml.cs">
       <DependentUpon>TeacherTimeTablePage.xaml</DependentUpon>

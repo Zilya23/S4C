@@ -1,4 +1,4 @@
-﻿<Page x:Class="School4Children.Pages.TeacherTimeTablePage"
+﻿<Page x:Class="School4Children.Pages.TeacherLessonsTimePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:School4Children.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TeacherTimeTablePage">
+      Title="TeacherLessonsTimePage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,54 +28,47 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
-        <Button x:Name="btnTeacher"
-                Content="Учителя"
+        <Button x:Name="btnBack"
+                Content="Назад"
                 Grid.Column="0" Grid.ColumnSpan="2"
                 Grid.Row="0"
                 FontFamily="Microsoft JhengHei UI Light"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="40" 
-                Height="Auto"/>
-        <Button x:Name="btnJournal"
-                Content="Журнал"
-                Grid.Column="2" Grid.ColumnSpan="2"
-                Grid.Row="0"
-                FontFamily="Microsoft JhengHei UI Light"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                FontSize="40"
-                Height="Auto"/>
-        <Button x:Name="btnStatistic"
-                Content="Статистика"
+                Height="Auto" Click="btnBack_Click"/>
+        <Button x:Name="btnAdd"
+                Content="Добавить"
                 Grid.Column="4" Grid.ColumnSpan="2"
                 Grid.Row="0"
                 FontFamily="Microsoft JhengHei UI Light"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="40"
-                Height="Auto"/>
-
-        <TextBlock Text="{Binding Lesson.Name}"
+                Height="Auto" Click="btnAdd_Click"/>
+        <TextBlock Text=""
                    Grid.Column="1" Grid.ColumnSpan="4"
                    Grid.Row="1"
                    Margin="10"
-                   FontSize="20"
-                   FontFamily="Microsoft JhengHei UI Light"/>
+                   FontSize="30"
+                   FontFamily="Microsoft JhengHei UI Light"
+                   x:Name="tb_lesson"
+                   HorizontalAlignment="Center"/>
 
         <ListView x:Name="lvTimetable" 
-                  ItemsSource="{Binding lessonList}" 
+                  ItemsSource="{Binding lessonsList}" 
                   Grid.Row="2" Grid.RowSpan="7"
                   Grid.Column="0" Grid.ColumnSpan="6"
                   FontSize="25"
                   FontFamily="Microsoft JhengHei UI Light"
-                  Foreground="Black" MouseDoubleClick="lvTimetable_MouseDoubleClick">
+                  Foreground="Black" >
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="№" DisplayMemberBinding="{Binding ID}"/>
-                        <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DateLesson, StringFormat=dd.MM.yyyy , ConverterCulture=ru}" />
+                        <GridViewColumn Header="Кабинет" DisplayMemberBinding="{Binding Classroom}"/>
+                        <GridViewColumn Header="Время" DisplayMemberBinding="{Binding TimeLessons, StringFormat={}{0:hh}:{0:mm}:{0:ss}}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
