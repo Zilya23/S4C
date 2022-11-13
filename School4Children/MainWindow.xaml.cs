@@ -24,7 +24,7 @@ namespace School4Children
         public MainWindow()
         {
             InitializeComponent();
-            frNavigate.NavigationService.Navigate(new StatisticPage());
+            frNavigate.NavigationService.Navigate(new AuthorizationPage());
         }
     }
 }
