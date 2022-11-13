@@ -7,28 +7,28 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Button x:Name="btnBack"
+            <Button x:Name="btnBack"
                 Content="Назад"
                 Grid.Column="0"
                 FontFamily="Microsoft JhengHei UI Light"
@@ -37,32 +37,46 @@
                 Height="Auto"
                 Click="btnBackClick"/>
 
-        <TextBlock x:Name="teacherNameTb"
+            <TextBlock x:Name="teacherNameTb"
                    Grid.Column="2" Grid.ColumnSpan="2"
                    FontSize="30"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" 
                    FontFamily="Microsoft JhengHei UI Light"/>
 
-        <StackPanel Orientation="Vertical" Grid.Column="4" Grid.ColumnSpan="2" Margin="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="lessomNameTb" Foreground="Black" FontSize="18    "/>
-            <TextBlock x:Name="dateTb" Foreground="Black" FontSize="18"/>
-        </StackPanel>
-        
-        <ListView x:Name="lvLessons" 
+            <StackPanel Orientation="Vertical" Grid.Column="4" Grid.ColumnSpan="2" Margin="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="lessomNameTb" Foreground="Black" FontSize="18    "/>
+                <TextBlock x:Name="dateTb" Foreground="Black" FontSize="18"/>
+            </StackPanel>
+
+            <ListView x:Name="lvStudents"
                   ItemsSource="{Binding students}"
                   Grid.Row="2" Grid.RowSpan="7"
                   Grid.Column="0" Grid.ColumnSpan="6"
                   FontSize="25"
                   HorizontalAlignment="Stretch"
                   FontFamily="Microsoft JhengHei UI Light">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="4"/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            
-            
-        </ListView>
-    </Grid>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+
+                            <Label HorizontalAlignment="Center" Foreground="Black" FontSize="28" Content="{Binding GroupStatistic.Student.LastName}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBlock Text=" " FontSize="28"/>
+                            <Label HorizontalAlignment="Center" Foreground="Black" FontSize="28" Content="{Binding GroupStatistic.Student.Name}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBlock Text=" " FontSize="28"/>
+                            <Label HorizontalAlignment="Center" Foreground="Black" FontSize="28" Content="{Binding GroupStatistic.Student.Patronic}" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <TextBlock Text="    " FontSize="28"/>
+                            <CheckBox HorizontalAlignment="Center" FontSize="18" IsChecked="{Binding IsVisited}" Foreground="Black" VerticalAlignment="Center" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" IsEnabled="False"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
 </Page>
