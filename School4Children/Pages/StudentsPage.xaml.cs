@@ -26,6 +26,7 @@ namespace School4Children.Pages
             lessomNameTb.Text = lessonName;
             dateTb.Text = dateTime.ToString("MMMM dd, yyyy") + " " + time.Hours + ":" + time.Minutes;
 
+
             DataContext = this;
         }
 
