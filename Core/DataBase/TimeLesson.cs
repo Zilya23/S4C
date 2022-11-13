@@ -22,7 +22,7 @@ namespace Core.DataBase
     
         public int ID { get; set; }
         public Nullable<System.DateTime> DateLesson { get; set; }
-        public Nullable<System.TimeSpan> TimeLesson1 { get; set; }
+        public Nullable<System.TimeSpan> TimeLessons { get; set; }
         public string Classroom { get; set; }
         public Nullable<int> IDLesson { get; set; }
     
