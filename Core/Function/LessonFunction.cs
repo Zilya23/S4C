@@ -21,9 +21,14 @@ namespace Core.Function
 
         public static void SaveLesson(Lesson lesson)
         {
+            lesson.IsDelete = false;
             BDConnection.connection.Lesson.Add(lesson);
             BDConnection.connection.SaveChanges();
-            //;fjghlfidjg;jng
+        }
+
+        public static void SaveChangesLesson(Lesson lesson)
+        {
+            BDConnection.connection.SaveChanges();
         }
     }
 }
