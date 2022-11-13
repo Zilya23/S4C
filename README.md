@@ -2,8 +2,6 @@
 <br>
 git init <br>
 git add . <br>
-git rm --cached Core/App.Config <br>
-git rm --cached School4Children/App.config <br>
 git status (тут ниче писать не надо, но должно высветиться красным текстом 2 файлика, остальное зелёным) <br>
 git remote add origin (тут сслка) <br>
 git commit -m "(название коммита)" <br>
