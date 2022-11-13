@@ -17,16 +17,13 @@ using System.Windows.Shapes;
 
 namespace School4Children.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для StatisticPage.xaml
-    /// </summary>
     public partial class StatisticPage : Page
     {
-        public List<GroupTime> groupList { get; set; }
+        public List<Timetable> groupList { get; set; }
         public StatisticPage()
         {
             InitializeComponent();
-            groupList = GroupFunctions.GetGroups();
+            groupList = GroupFunctions.GetTimes();
             DataContext = this;
         }
 
@@ -39,33 +36,26 @@ namespace School4Children.Pages
             if (dpDate.SelectedDate != null)
             {
                 var selectedDate = dpDate.SelectedDate;
-                lvLessons.ItemsSource = groupList.Where(x => x.Timetable.TimeLesson.DateLesson == selectedDate).ToList();
+                lvLessons.ItemsSource = groupList.Where(x => x.TimeLesson.DateLesson == selectedDate).ToList();
             }
         }
 
         private void tbCircle_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (dpDate.SelectedDate != null)
+            if (tbCircle.Text != "")
             {
                 var selectedDate = dpDate.SelectedDate;
-                lvLessons.ItemsSource = groupList.Where(x => x.Timetable.TimeLesson.Lesson.Name.Contains(tbCircle.Text.ToString())).ToList();
+                lvLessons.ItemsSource = groupList.Where(x => x.TimeLesson.Lesson.Name.Contains(tbCircle.Text.ToString())).ToList();
             }
         }
 
         private void lvLessons_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            try
-            {
-                var item = (sender as ListView).SelectedItem as GroupTime;
-                var date = item.Timetable.TimeLesson.DateLesson;
-                var time = item.Timetable.TimeLesson.TimeLessons;
-                NavigationService.Navigate(new StudentsPage(item.GroupStatistic.Lesson.Teacher.Name + " " + item.GroupStatistic.Lesson.Teacher.LastName + " " + item.GroupStatistic.Lesson.Teacher.Patronic, item.Timetable.TimeLesson.Lesson.Name, (DateTime)date, (TimeSpan)time));
+            var item = (sender as ListView).SelectedItem as Timetable;
+            var date = item.TimeLesson.DateLesson;
+            var time = item.TimeLesson.TimeLessons;
+            NavigationService.Navigate(new StudentsPage(item.TimeLesson.Lesson.Teacher.Name + " " + item.TimeLesson.Lesson.Teacher.LastName + " " + item.TimeLesson.Lesson.Teacher.Patronic, item.TimeLesson.Lesson, (DateTime)date, (TimeSpan)time));
 
-            }
-            catch (Exception exc)
-            {
-
-            }
         }
     }
 }

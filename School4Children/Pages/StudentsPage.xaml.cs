@@ -1,4 +1,5 @@
 ﻿using Core.DataBase;
+using Core.Function;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,18 @@ namespace School4Children.Pages
 {
     public partial class StudentsPage : Page
     {
-        public List<Student> students { get; set; }
-        public StudentsPage(string teacherName, string lessonName, DateTime dateTime, TimeSpan time)
+        public List<GroupTime> students { get; set; }
+        public List<GroupStatistic> statistic { get; set; }
+        public StudentsPage(string teacherName, Lesson lesson, DateTime dateTime, TimeSpan time)
         {
             InitializeComponent();
             teacherNameTb.Text = teacherName;
-            lessomNameTb.Text = lessonName;
+            lessomNameTb.Text = lesson.Name;
             dateTb.Text = dateTime.ToString("MMMM dd, yyyy") + " " + time.Hours + ":" + time.Minutes;
 
+            statistic = GroupFunctions.GetGroupStats();
+
+            students = BDConnection.connection.GroupTime.Where(x => x.GroupStatistic.IDLesson == lesson.ID).ToList();
 
             DataContext = this;
         }

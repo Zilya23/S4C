@@ -9,9 +9,14 @@ namespace Core.Function
 {
     public class GroupFunctions
     {
-        public static List<GroupTime> GetGroups()
+        public static List<Timetable> GetTimes()
         {
-            return BDConnection.connection.GroupTime.ToList();
+            return BDConnection.connection.Timetable.ToList();
+        }
+
+        public static List<GroupStatistic> GetGroupStats()
+        {
+            return BDConnection.connection.GroupStatistic.ToList();
         }
     }
 }

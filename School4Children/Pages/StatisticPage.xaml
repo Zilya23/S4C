@@ -81,14 +81,14 @@
                   FontFamily="Microsoft JhengHei UI Light"
                   Foreground="Black" MouseDoubleClick="lvLessons_MouseDoubleClick">
             <ListView.View>
-            <GridView>
+                <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="Название">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock>
-                                        <Run Text="{Binding Timetable.TimeLesson.Lesson.Name}"/>
-                                        <Run Text="{Binding Timetable.TimeLesson.Lesson.ID}"/>
+                                        <Run Text="{Binding TimeLesson.Lesson.Name}"/>
+                                        <Run Text="{Binding TimeLesson.Lesson.ID}"/>
                                     </TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -97,26 +97,26 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock>
-                                        <Run Text="{Binding GroupStatistic.Lesson.Teacher.LastName}"/>
+                                        <Run Text="{Binding TimeLesson.Lesson.Teacher.LastName}"/>
                                         <Run Text=" "/>
-                                        <Run Text="{Binding GroupStatistic.Lesson.Teacher.Name}"/>
+                                        <Run Text="{Binding TimeLesson.Lesson.Teacher.Name}"/>
                                         <Run Text=" "/>
-                                        <Run Text="{Binding GroupStatistic.Lesson.Teacher.Patronic}"/>
+                                        <Run Text="{Binding TimeLesson.Lesson.Teacher.Patronic}"/>
                                     </TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Timetable.TimeLesson.DateLesson, StringFormat=dd.MM.yyyy, ConverterCulture=ru}"/>
+                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding TimeLesson.DateLesson, StringFormat=dd.MM.yyyy, ConverterCulture=ru}"/>
                         <GridViewColumn Header="Время">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Timetable.TimeLesson.TimeLessons, StringFormat={}{0:hh}:{0:mm}}"/>
+                                    <TextBlock Text="{Binding TimeLesson.TimeLessons, StringFormat={}{0:hh}:{0:mm}}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                     </GridView.Columns>
-            </GridView>
-        </ListView.View>
+                </GridView>
+            </ListView.View>
         </ListView>
     </Grid>
 </Page>
