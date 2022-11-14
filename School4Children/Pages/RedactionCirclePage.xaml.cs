@@ -22,9 +22,17 @@ namespace School4Children.Pages
     /// </summary>
     public partial class RedactionCirclePage : Page
     {
-        public RedactionCirclePage()
+        public Lesson redLesson { get; set; }
+        public List<Teacher> teachers { get; set; }
+        public RedactionCirclePage(Lesson lesson)
         {
             InitializeComponent();
+            redLesson = lesson;
+            teachers = TeacherFunction.GetTeachers();
+            cbTeacher.ItemsSource = teachers;
+            cbTeacher.SelectedItem = lesson.Teacher;
+            tbName.Text = lesson.Name;
+            DataContext = this;
         }
 
         private void btnBackClick(object sender, RoutedEventArgs e)
@@ -36,15 +44,14 @@ namespace School4Children.Pages
         {
             try
             {
-                Lesson lesson = new Lesson();
                 if (tbName.Text.Trim().Length != 0)
                 {
-                    lesson.Name = tbName.Text.Trim();
+                    redLesson.Name = tbName.Text.Trim();
 
                     if (cbTeacher.SelectedItem != null)
                     {
-                        lesson.Teacher = cbTeacher.SelectedItem as Teacher;
-                        LessonFunction.SaveChangesLesson(lesson);
+                        redLesson.Teacher = cbTeacher.SelectedItem as Teacher;
+                        LessonFunction.SaveChangesLesson(redLesson);
                         MessageBox.Show("Успешно!");
                         NavigationService.Navigate(new HeadTimtableMainPage());
                     }
@@ -66,7 +73,14 @@ namespace School4Children.Pages
 
         private void btnDeleteClick(object sender, RoutedEventArgs e)
         {
-
+            var messageDelete = MessageBox.Show("Вы действительно хотите удалить кружок?", "Внимание", MessageBoxButton.YesNoCancel);
+            if (messageDelete == MessageBoxResult.Yes)
+            {
+                redLesson.IsDelete = true;
+                LessonFunction.SaveChangesLesson(redLesson);
+                MessageBox.Show("Успешно!");
+                NavigationService.Navigate(new HeadTimtableMainPage());
+            }
         }
     }
 }

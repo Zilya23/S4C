@@ -74,7 +74,8 @@
                   Grid.Column="0" Grid.ColumnSpan="6"
                   FontSize="25"
                   FontFamily="Microsoft JhengHei UI Light"
-                  Foreground="Black">
+                  Foreground="Black"
+                  SelectionChanged="lvTeacherSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

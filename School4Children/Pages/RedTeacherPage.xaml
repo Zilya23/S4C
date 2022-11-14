@@ -1,13 +1,13 @@
-﻿<Page x:Class="School4Children.Pages.RedactionCirclePage"
+﻿<Page x:Class="School4Children.Pages.RedTeacherPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:School4Children.Pages"
-      mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RedactionCirclePage">
+      Title="RedTeacherPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
                 FontFamily="Microsoft JhengHei UI Light"
                 FontSize="30"
                 Click="btnSaveClick"/>
-
+        
         <Button x:Name="btnDelete"
                 Content="Удалить"
                 Grid.Column="5"
@@ -56,7 +56,7 @@
                 FontSize="30"
                 Click="btnDeleteClick"/>
 
-        <TextBlock Text="Редактировать кружок"
+        <TextBlock Text="Редактировать учителя"
                    Grid.Column="1" Grid.ColumnSpan="5"
                    Grid.Row="0"
                    FontSize="40"
@@ -65,7 +65,21 @@
                    FontFamily="Microsoft JhengHei UI Light"/>
 
         <TextBox x:Name="tbName"
-                 materialDesign:HintAssist.Hint="Название"  
+                 Text="{Binding redTeacher.Name}"
+                 materialDesign:HintAssist.Hint="Имя"  
+                 materialDesign:HintAssist.IsFloating="True"
+                 Grid.Row="1"
+                 Grid.Column="0" Grid.ColumnSpan="3"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 FontFamily="Microsoft JhengHei UI Light"
+                 Margin="40, 0, 0, 0"
+                 Height="55"
+                 FontSize="20"/>
+
+        <TextBox x:Name="tbLastName"
+                 Text="{Binding redTeacher.LastName}"
+                 materialDesign:HintAssist.Hint="Фамилия"  
                  materialDesign:HintAssist.IsFloating="True"
                  Grid.Row="2"
                  Grid.Column="0" Grid.ColumnSpan="3"
@@ -76,28 +90,54 @@
                  Height="55"
                  FontSize="20"/>
 
-        <ComboBox x:Name="cbTeacher"
-                 materialDesign:HintAssist.Hint="Преподаватель"  
+        <TextBox x:Name="tbPatronic"
+                 Text="{Binding redTeacher.Patronic}"
+                 materialDesign:HintAssist.Hint="Отчество"  
                  materialDesign:HintAssist.IsFloating="True"
-                 Grid.Row="2"
-                 Grid.Column="3" Grid.ColumnSpan="3"
+                 Grid.Row="3"
+                 Grid.Column="0" Grid.ColumnSpan="3"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
                  FontFamily="Microsoft JhengHei UI Light"
                  Margin="40, 0, 0, 0"
                  Height="55"
-                 FontSize="20">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <Run Text="{Binding LastName}"/>
-                        <Run Text=" "/>
-                        <Run Text="{Binding Name}"/>
-                        <Run Text=" "/>
-                        <Run Text="{Binding Patronic}"/>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                 FontSize="20"/>
+
+        <DatePicker Name="dpBirthDate"
+                    SelectedDate="{Binding redTeacher.BirthDate}"
+                    materialDesign:HintAssist.Hint="Дата рождения"
+                    materialDesign:HintAssist.IsFloating="True"
+                    Grid.Column="0" Grid.ColumnSpan="3"
+                    Grid.Row="4"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    FontFamily="Microsoft JhengHei UI Light"
+                    Margin="40, 0, 0, 0"
+                    Height="55"
+                    FontSize="20"/>
+
+        <ComboBox x:Name="cbEduation"
+                  materialDesign:HintAssist.Hint="Образование"  
+                  materialDesign:HintAssist.IsFloating="True"
+                  Grid.Row="5"
+                  Grid.Column="0" Grid.ColumnSpan="2"
+                  HorizontalAlignment="Stretch"
+                  FontFamily="Microsoft JhengHei UI Light"
+                  IsEditable="True"
+                  Margin="40, 0, 0, 0"
+                  FontSize="20"/>
+
+        <TextBox x:Name="tbPassword"
+                 Text="{Binding redTeacher.Password}"
+                 materialDesign:HintAssist.Hint="Пароль"  
+                 materialDesign:HintAssist.IsFloating="True"
+                 Grid.Row="1"
+                 Grid.Column="4" Grid.ColumnSpan="3"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 FontFamily="Microsoft JhengHei UI Light"
+                 Margin="0, 0, 40, 0"
+                 Height="55"
+                 FontSize="20"/>
     </Grid>
 </Page>
