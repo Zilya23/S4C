@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище School6Model" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище SchoolFinalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Education">
           <Key>
             <PropertyRef Name="ID" />
@@ -57,16 +57,6 @@
           <Property Name="Class" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="ID" />
@@ -89,7 +79,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateLesson" Type="date" />
           <Property Name="TimeLessons" Type="time" Precision="7" />
-          <Property Name="Classroom" Type="varchar" MaxLength="10" />
+          <Property Name="Classroom" Type="varchar" MaxLength="15" />
           <Property Name="IDLesson" Type="int" />
         </EntityType>
         <EntityType Name="Timetable">
@@ -208,14 +198,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище School6ModelContainer">
+        <EntityContainer Name="Хранилище SchoolFinalModelContainer">
           <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupStatistic" EntityType="Self.GroupStatistic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupTime" EntityType="Self.GroupTime" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeLesson" EntityType="Self.TimeLesson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" Schema="dbo" store:Type="Tables" />
@@ -256,10 +245,11 @@
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="School6Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SchoolFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Education">
           <Key>
             <PropertyRef Name="ID" />
@@ -301,7 +291,7 @@
           <Property Name="CountChildren" Type="Int32" />
           <NavigationProperty Name="GroupStatistic" Relationship="Self.FK_Statistic_Lesson" FromRole="Lesson" ToRole="GroupStatistic" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
-          <NavigationProperty Name="TimeLesson" Relationship="School6Model.FK_TimeLesson_Lesson" FromRole="Lesson" ToRole="TimeLesson" />
+          <NavigationProperty Name="TimeLesson" Relationship="Self.FK_TimeLesson_Lesson" FromRole="Lesson" ToRole="TimeLesson" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -323,16 +313,6 @@
           <Property Name="IsDelete" Type="Boolean" />
           <NavigationProperty Name="GroupStatistic" Relationship="Self.FK_Statistic_Student" FromRole="Student" ToRole="GroupStatistic" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="ID" />
@@ -351,6 +331,18 @@
           <NavigationProperty Name="Lesson" Relationship="Self.FK_Lesson_Teacher" FromRole="Teacher" ToRole="Lesson" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Teacher_Role" FromRole="Teacher" ToRole="Role" />
         </EntityType>
+        <EntityType Name="TimeLesson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateLesson" Type="DateTime" Precision="0" />
+          <Property Name="TimeLessons" Type="Time" Precision="7" />
+          <Property Name="Classroom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IDLesson" Type="Int32" />
+          <NavigationProperty Name="Lesson" Relationship="Self.FK_TimeLesson_Lesson" FromRole="TimeLesson" ToRole="Lesson" />
+          <NavigationProperty Name="Timetable" Relationship="Self.FK_Timetable_TimeLesson" FromRole="TimeLesson" ToRole="Timetable" />
+        </EntityType>
         <EntityType Name="Timetable">
           <Key>
             <PropertyRef Name="ID" />
@@ -359,7 +351,7 @@
           <Property Name="IsDelete" Type="Boolean" />
           <Property Name="IDTimeLesson" Type="Int32" />
           <NavigationProperty Name="GroupTime" Relationship="Self.FK_GroupTime_Timetable" FromRole="Timetable" ToRole="GroupTime" />
-          <NavigationProperty Name="TimeLesson" Relationship="School6Model.FK_Timetable_TimeLesson" FromRole="Timetable" ToRole="TimeLesson" />
+          <NavigationProperty Name="TimeLesson" Relationship="Self.FK_Timetable_TimeLesson" FromRole="Timetable" ToRole="TimeLesson" />
         </EntityType>
         <Association Name="FK_Teacher_Education">
           <End Role="Education" Type="Self.Education" Multiplicity="1" />
@@ -433,6 +425,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TimeLesson_Lesson">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="0..1" />
+          <End Role="TimeLesson" Type="Self.TimeLesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TimeLesson">
+              <PropertyRef Name="IDLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Teacher_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
@@ -445,15 +449,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="School6Entities1" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Timetable_TimeLesson">
+          <End Role="TimeLesson" Type="Self.TimeLesson" Multiplicity="0..1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeLesson">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IDTimeLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SchoolFinalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Education" EntityType="Self.Education" />
           <EntitySet Name="GroupStatistic" EntityType="Self.GroupStatistic" />
           <EntitySet Name="GroupTime" EntityType="Self.GroupTime" />
           <EntitySet Name="Lesson" EntityType="Self.Lesson" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Student" EntityType="Self.Student" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
+          <EntitySet Name="TimeLesson" EntityType="Self.TimeLesson" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" />
           <AssociationSet Name="FK_Teacher_Education" Association="Self.FK_Teacher_Education">
             <End Role="Education" EntitySet="Education" />
@@ -479,64 +495,27 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Lesson" EntitySet="Lesson" />
           </AssociationSet>
+          <AssociationSet Name="FK_TimeLesson_Lesson" Association="Self.FK_TimeLesson_Lesson">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="TimeLesson" EntitySet="TimeLesson" />
+          </AssociationSet>
           <AssociationSet Name="FK_Teacher_Role" Association="Self.FK_Teacher_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Teacher" EntitySet="Teacher" />
           </AssociationSet>
-          <EntitySet Name="TimeLesson" EntityType="School6Model.TimeLesson" />
-          <AssociationSet Name="FK_TimeLesson_Lesson" Association="School6Model.FK_TimeLesson_Lesson">
-            <End Role="Lesson" EntitySet="Lesson" />
-            <End Role="TimeLesson" EntitySet="TimeLesson" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Timetable_TimeLesson" Association="School6Model.FK_Timetable_TimeLesson">
+          <AssociationSet Name="FK_Timetable_TimeLesson" Association="Self.FK_Timetable_TimeLesson">
             <End Role="TimeLesson" EntitySet="TimeLesson" />
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="TimeLesson">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateLesson" Type="DateTime" Precision="0" />
-          <Property Name="TimeLessons" Type="Time" Precision="7" />
-          <Property Name="Classroom" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="IDLesson" Type="Int32" />
-          <NavigationProperty Name="Lesson" Relationship="School6Model.FK_TimeLesson_Lesson" FromRole="TimeLesson" ToRole="Lesson" />
-          <NavigationProperty Name="Timetable" Relationship="School6Model.FK_Timetable_TimeLesson" FromRole="TimeLesson" ToRole="Timetable" />
-        </EntityType>
-        <Association Name="FK_TimeLesson_Lesson">
-          <End Type="School6Model.Lesson" Role="Lesson" Multiplicity="0..1" />
-          <End Type="School6Model.TimeLesson" Role="TimeLesson" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lesson">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TimeLesson">
-              <PropertyRef Name="IDLesson" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Timetable_TimeLesson">
-          <End Type="School6Model.TimeLesson" Role="TimeLesson" Multiplicity="0..1" />
-          <End Type="School6Model.Timetable" Role="Timetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TimeLesson">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Timetable">
-              <PropertyRef Name="IDTimeLesson" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище School6ModelContainer" CdmEntityContainer="School6Entities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SchoolFinalModelContainer" CdmEntityContainer="SchoolFinalEntities">
           <EntitySetMapping Name="Education">
-            <EntityTypeMapping TypeName="School6Model.Education">
+            <EntityTypeMapping TypeName="SchoolFinalModel.Education">
               <MappingFragment StoreEntitySet="Education">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -544,7 +523,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroupStatistic">
-            <EntityTypeMapping TypeName="School6Model.GroupStatistic">
+            <EntityTypeMapping TypeName="SchoolFinalModel.GroupStatistic">
               <MappingFragment StoreEntitySet="GroupStatistic">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
@@ -553,7 +532,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroupTime">
-            <EntityTypeMapping TypeName="School6Model.GroupTime">
+            <EntityTypeMapping TypeName="SchoolFinalModel.GroupTime">
               <MappingFragment StoreEntitySet="GroupTime">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDTimetable" ColumnName="IDTimetable" />
@@ -563,7 +542,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lesson">
-            <EntityTypeMapping TypeName="School6Model.Lesson">
+            <EntityTypeMapping TypeName="SchoolFinalModel.Lesson">
               <MappingFragment StoreEntitySet="Lesson">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -574,7 +553,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="School6Model.Role">
+            <EntityTypeMapping TypeName="SchoolFinalModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -582,7 +561,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Student">
-            <EntityTypeMapping TypeName="School6Model.Student">
+            <EntityTypeMapping TypeName="SchoolFinalModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -593,19 +572,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="School6Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Teacher">
-            <EntityTypeMapping TypeName="School6Model.Teacher">
+            <EntityTypeMapping TypeName="SchoolFinalModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -620,23 +588,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TimeLesson">
+            <EntityTypeMapping TypeName="SchoolFinalModel.TimeLesson">
+              <MappingFragment StoreEntitySet="TimeLesson">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateLesson" ColumnName="DateLesson" />
+                <ScalarProperty Name="TimeLessons" ColumnName="TimeLessons" />
+                <ScalarProperty Name="Classroom" ColumnName="Classroom" />
+                <ScalarProperty Name="IDLesson" ColumnName="IDLesson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Timetable">
-            <EntityTypeMapping TypeName="School6Model.Timetable">
+            <EntityTypeMapping TypeName="SchoolFinalModel.Timetable">
               <MappingFragment StoreEntitySet="Timetable">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="IDTimeLesson" ColumnName="IDTimeLesson" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TimeLesson">
-            <EntityTypeMapping TypeName="School6Model.TimeLesson">
-              <MappingFragment StoreEntitySet="TimeLesson">
-                <ScalarProperty Name="IDLesson" ColumnName="IDLesson" />
-                <ScalarProperty Name="Classroom" ColumnName="Classroom" />
-                <ScalarProperty Name="TimeLessons" ColumnName="TimeLessons" />
-                <ScalarProperty Name="DateLesson" ColumnName="DateLesson" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -656,7 +624,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>

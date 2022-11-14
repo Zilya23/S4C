@@ -44,7 +44,7 @@ namespace School4Children.Pages
                         }
                         else
                         {
-                            NavigationService.Navigate(new TeacherTimeTablePage());
+                            NavigationService.Navigate(new TeacherTimeTablePage(teacher));
                         }
                     }
                     else
