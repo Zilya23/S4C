@@ -23,6 +23,7 @@
         <AssociationConnector Association="SchoolFinalModel.FK_TimeLesson_Lesson" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolFinalModel.FK_Teacher_Role" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolFinalModel.FK_Timetable_TimeLesson" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SchoolFinalModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

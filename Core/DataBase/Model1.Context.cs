@@ -34,5 +34,6 @@ namespace Core.DataBase
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<TimeLesson> TimeLesson { get; set; }
         public virtual DbSet<Timetable> Timetable { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
