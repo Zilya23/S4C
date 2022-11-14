@@ -152,5 +152,10 @@ namespace School4Children.Pages
                 NavigationService.Navigate(new RedactionCirclePage(lesson));
             }
         }
+
+        private void btnJoutnal_Click(object sender, RoutedEventArgs e)
+        {
+			NavigationService.Navigate(new StatisticPage());
+        }
     }
 }

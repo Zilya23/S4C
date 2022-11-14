@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:School4Children"
         mc:Ignorable="d"
-        Title="School4Children"
+        Title="Школа дополнительного образования Идея"
         MinHeight="450" MinWidth="800">
     <Grid>
         <Frame x:Name="frNavigate" NavigationUIVisibility="Hidden"/>

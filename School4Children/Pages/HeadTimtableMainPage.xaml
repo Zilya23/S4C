@@ -59,6 +59,18 @@
                 Height="Auto"
                 Click="btnStatisticClick"/>
 
+
+        <Button x:Name="btnJoutnal"
+                Content="Журнал"
+                Grid.Column="4"
+                Grid.Row="1"
+                FontFamily="Microsoft JhengHei UI Light"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                FontSize="20"
+                Height="Auto"
+                Margin="10"
+                Click="btnJoutnal_Click"/>
         <Button x:Name="btnAddLesson"
                 Content="Добавить занятие"
                 Grid.Column="5"
