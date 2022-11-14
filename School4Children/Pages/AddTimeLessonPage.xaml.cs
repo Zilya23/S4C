@@ -60,40 +60,78 @@ namespace School4Children.Pages
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             TimeSpan dtime = TimeSpan.Parse(tp_time.Text);
-            time.TimeLessons = dtime;
-            time.IDLesson = lesson.ID;
-            time.Classroom = tbx_classroom.Text;
 
-            TimeLessonFunction.SaveLesson(time);
-
-            timet.IsDelete = false;
-            timet.IDTimeLesson = time.ID;
-
-            TimeTableFunction.SaveTimetable(timet);
-
-            
-
-            foreach (var i in groupList)
+            var a = data_dp.SelectedDate;
+            if (IsDataCorrect(dtime.ToString()) && a != null && tbx_classroom.Text != "")
             {
-                GroupTime group = new GroupTime();
-                group.IDGroup = i.ID;
-                group.IDTimetable = timet.ID;
-                //group.IsVisited = false;
-                BDConnection.connection.GroupTime.Add(group);
-                BDConnection.connection.SaveChanges();
+                time.DateLesson = data_dp.SelectedDate;
+
+                time.TimeLessons = dtime;
+                time.IDLesson = lesson.ID;
+                time.Classroom = tbx_classroom.Text;
+
+                TimeLessonFunction.SaveLesson(time);
+
+                timet.IsDelete = false;
+                timet.IDTimeLesson = time.ID;
+
+                TimeTableFunction.SaveTimetable(timet);
+
+
+
+                foreach (var i in groupList)
+                {
+                    GroupTime group = new GroupTime();
+                    group.IDGroup = i.ID;
+                    group.IDTimetable = timet.ID;
+                    //group.IsVisited = false;
+                    BDConnection.connection.GroupTime.Add(group);
+                    BDConnection.connection.SaveChanges();
+                }
+
+                groupTimeList = BDConnection.connection.GroupTime.Where(x => x.GroupStatistic.IDLesson == lesson.ID && x.IDTimetable == timet.ID).ToList();
+                lvTimetable.ItemsSource = groupTimeList;
+                lvTimetable.Items.Refresh();
+                lvTimetable.Visibility = Visibility.Visible;
+                btnSave.Visibility = Visibility.Hidden;
+                data_dp.IsEnabled = false;
+                tp_time.IsEnabled = false;
+                tbx_classroom.IsEnabled = false;
             }
-            
-            groupTimeList = BDConnection.connection.GroupTime.Where(x => x.GroupStatistic.IDLesson == lesson.ID && x.IDTimetable == timet.ID).ToList();
-            lvTimetable.ItemsSource = groupTimeList;
-            lvTimetable.Items.Refresh();
-            lvTimetable.Visibility = Visibility.Visible;
-            btnSave.Visibility = Visibility.Hidden;
         }
 
         
         private void cbx_this_Click(object sender, RoutedEventArgs e)
         {
             BDConnection.connection.SaveChanges();
+        }
+
+        public bool IsDataCorrect(string datatime)
+        {
+            var timedate = TimeLessonFunction.GetTimeLesson();
+            bool data = true;
+            foreach (var a in timedate)
+            {
+                if (a.TimeLessons.ToString() == datatime && a.DateLesson == DateTime.Today)
+                    data = false;
+            }
+            if (data)
+            {
+                btnSave.Visibility = Visibility.Visible;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Такая дата уже занята", "error", MessageBoxButton.OK, MessageBoxImage.Error);
+                btnSave.Visibility = Visibility.Hidden;
+                return false;
+
+            }
+        }
+
+        private void tp_time_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
+        {
+            btnSave.Visibility = Visibility.Visible;
         }
     }
 }

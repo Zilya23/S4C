@@ -130,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UpdateTeacherTimeLessonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AddCirclePage.xaml.cs">
@@ -155,6 +159,9 @@
     </Compile>
     <Compile Include="Pages\TeacherTimeTablePage.xaml.cs">
       <DependentUpon>TeacherTimeTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UpdateTeacherTimeLessonPage.xaml.cs">
+      <DependentUpon>UpdateTeacherTimeLessonPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

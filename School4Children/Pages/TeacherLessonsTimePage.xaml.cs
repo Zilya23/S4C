@@ -49,5 +49,14 @@ namespace School4Children.Pages
         {
             NavigationService.Navigate(new AddTimeLessonPage(teacher, lesson));
         }
+
+        private void lvTimetable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var a = lvTimetable.SelectedItem as TimeLesson;
+            if (a.DateLesson == DateTime.Today)
+                NavigationService.Navigate(new UpdateTeacherTimeLessonPage(teacher, lesson, a));
+            else
+                MessageBox.Show("Нельзя редактировать прошлые дни", "error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
