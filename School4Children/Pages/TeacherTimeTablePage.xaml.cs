@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,17 @@ namespace School4Children.Pages
     /// </summary>
     public partial class TeacherTimeTablePage : Page
     {
-        public TeacherTimeTablePage()
+        Teacher teacher = new Teacher();
+        
+        public TeacherTimeTablePage(Teacher teacher1)
         {
             InitializeComponent();
+            teacher = teacher1;    
+        }
+
+        private void btnTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CilcreStudentListPage(teacher));
         }
     }
 }

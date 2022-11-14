@@ -110,6 +110,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CilcreStudentListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HeadTeacherMainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +140,9 @@
     </Compile>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CilcreStudentListPage.xaml.cs">
+      <DependentUpon>CilcreStudentListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\HeadTeacherMainPage.xaml.cs">
       <DependentUpon>HeadTeacherMainPage.xaml</DependentUpon>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище School6Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище School6Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Education">
           <Key>
             <PropertyRef Name="ID" />
@@ -19,6 +19,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDStudent" Type="int" />
           <Property Name="IDLesson" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
         </EntityType>
         <EntityType Name="GroupTime">
           <Key>
@@ -245,8 +246,7 @@
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="School6Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -268,6 +268,7 @@
           <NavigationProperty Name="GroupTime" Relationship="Self.FK_GroupTime_GroupStatistic" FromRole="GroupStatistic" ToRole="GroupTime" />
           <NavigationProperty Name="Lesson" Relationship="Self.FK_Statistic_Lesson" FromRole="GroupStatistic" ToRole="Lesson" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Statistic_Student" FromRole="GroupStatistic" ToRole="Student" />
+          <Property Name="IsDelete" Type="Boolean" />
         </EntityType>
         <EntityType Name="GroupTime">
           <Key>
@@ -525,6 +526,7 @@
           <EntitySetMapping Name="GroupStatistic">
             <EntityTypeMapping TypeName="School6Model.GroupStatistic">
               <MappingFragment StoreEntitySet="GroupStatistic">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
                 <ScalarProperty Name="IDLesson" ColumnName="IDLesson" />

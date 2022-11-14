@@ -33,11 +33,12 @@
                 Content="Учителя"
                 Grid.Column="0" Grid.ColumnSpan="2"
                 Grid.Row="0"
+                Click="btnTeacher_Click"
                 FontFamily="Microsoft JhengHei UI Light"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="40" 
-                Height="Auto"/>
+                Height="Auto" Cursor="Hand"/>
         <Button x:Name="btnTable"
                 Content="Расписание"
                 Grid.Column="2" Grid.ColumnSpan="2"
