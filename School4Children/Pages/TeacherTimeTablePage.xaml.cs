@@ -40,5 +40,10 @@ namespace School4Children.Pages
             var a = lvTimetable.SelectedItem as Lesson;
             NavigationService.Navigate(new TeacherLessonsTimePage(a, teacher));
         }
+
+        private void btnTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CilcreStudentListPage(teacher));
+        }
     }
 }

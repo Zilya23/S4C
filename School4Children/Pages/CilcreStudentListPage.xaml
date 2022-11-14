@@ -1,11 +1,12 @@
-﻿<Page x:Class="School4Children.Pages.TeacherTimeTablePage"
+﻿<Page x:Class="School4Children.Pages.CilcreStudentListPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:School4Children.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CilcreStudentListPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,23 +31,23 @@
 
         <Button x:Name="btnTeacher"
                 Content="Учителя"
-                Click="btnTeacher_Click"
                 Grid.Column="0" Grid.ColumnSpan="2"
                 Grid.Row="0"
+                Click="btnTeacher_Click"
                 FontFamily="Microsoft JhengHei UI Light"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="40" 
-                Height="Auto"/>
-        <Button x:Name="btnJournal"
-                Content="Журнал"
+                Height="Auto" Cursor="Hand"/>
+        <Button x:Name="btnTable"
+                Content="Расписание"
                 Grid.Column="2" Grid.ColumnSpan="2"
                 Grid.Row="0"
                 FontFamily="Microsoft JhengHei UI Light"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="40"
-                Height="Auto"/>
+                Height="Auto" Cursor="Hand"/>
         <Button x:Name="btnStatistic"
                 Content="Статистика"
                 Grid.Column="4" Grid.ColumnSpan="2"
@@ -57,25 +58,45 @@
                 FontSize="40"
                 Height="Auto"/>
 
-        <TextBlock Text="{Binding Lesson.Name}"
-                   Grid.Column="1" Grid.ColumnSpan="4"
-                   Grid.Row="1"
-                   Margin="10"
-                   FontSize="20"
-                   FontFamily="Microsoft JhengHei UI Light"/>
-
+        <Button x:Name="addNewStudentBtn"
+                Content="Записать ученика"
+                Grid.ColumnSpan="2"
+                Grid.Row="1"
+                FontFamily="Microsoft JhengHei UI Light"
+                VerticalAlignment="Center"
+                Height="40"
+                Click="addNewStudentBtn_Click"
+                Cursor="Hand"/>
+        
         <ListView x:Name="lvTimetable" 
-                  ItemsSource="{Binding lessonList}" 
+                  ItemsSource="{Binding statisticList}" 
                   Grid.Row="2" Grid.RowSpan="7"
                   Grid.Column="0" Grid.ColumnSpan="6"
                   FontSize="25"
+                  SelectionChanged="lvTimetable_SelectionChanged"
                   FontFamily="Microsoft JhengHei UI Light"
-                  Foreground="Black" MouseDoubleClick="lvTimetable_MouseDoubleClick">
+                  Foreground="Black">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="№" DisplayMemberBinding="{Binding ID}"/>
-                        <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="№"
+                                        DisplayMemberBinding="{Binding ID}"/>
+                        <GridViewColumn Header="Кружок"
+                                        DisplayMemberBinding="{Binding Lesson.Name}"/>
+                        <GridViewColumn Header="ФИО">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <Run Text="{Binding Student.LastName}"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Student.Name}"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Student.Patronic}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
