@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core.Function;
 using static System.Net.Mime.MediaTypeNames;
+using MaterialDesignThemes.Wpf;
 
 namespace School4Children.Pages
 {
@@ -88,8 +89,9 @@ namespace School4Children.Pages
                     BDConnection.connection.GroupTime.Add(group);
                     BDConnection.connection.SaveChanges();
                 }
-
+                
                 groupTimeList = BDConnection.connection.GroupTime.Where(x => x.GroupStatistic.IDLesson == lesson.ID && x.IDTimetable == timet.ID).ToList();
+
                 lvTimetable.ItemsSource = groupTimeList;
                 lvTimetable.Items.Refresh();
                 lvTimetable.Visibility = Visibility.Visible;

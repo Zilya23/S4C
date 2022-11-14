@@ -48,8 +48,9 @@ namespace School4Children.Pages
             
             groupList = new List<GroupStatistic>();
             groupList = GroupStudentFunction.GetGroupStatistic().Where(a => a.IDLesson == lesson.ID && a.Lesson.IDTeacher == teacher.ID).ToList();
-
+            
             groupTimeList = BDConnection.connection.GroupTime.Where(x => x.GroupStatistic.IDLesson == lesson.ID && x.Timetable.TimeLesson.ID == time.ID).ToList();
+            
             DataContext = this;
         }
 
