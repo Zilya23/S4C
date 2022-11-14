@@ -59,7 +59,6 @@ namespace School4Children.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            time.DateLesson = data_dp.SelectedDate;
             TimeSpan dtime = TimeSpan.Parse(tp_time.Text);
             time.TimeLessons = dtime;
             time.IDLesson = lesson.ID;
